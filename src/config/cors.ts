@@ -12,7 +12,7 @@ export const corsConfig: CorsOptions = {
             whitelist.push(undefined)   // Le agregamos a la whitelist el undefined que es lo que nos regresa el "origin" cuando trabajamos con POSTMAN
         }
 
-        if(whitelist.includes(origin)) { // Si el origen es una URL de nuetra whitelist, le permitirmos el acceso
+        if(!origin || whitelist.includes(origin)) { // Si el origen es una URL de nuetra whitelist, le permitirmos el acceso
             callback(null, true) // El null es un error, el true es si permitimos el acceso
         } else {
             callback(new Error('Error de CORS'))
